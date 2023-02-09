@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import css from 'components/ContactForm/ContactForm.module.css';
 import { nanoid } from 'nanoid';
-import contacts from 'components/contacts';
+
 import ContactList from 'components/Contact/Contact';
 import Filter from 'components/Filter/Filter';
 import Form from 'components/Form/Form';
@@ -58,7 +58,6 @@ const ContactForm = () => {
     return result;
   };
   const filteredContacts = getFilteredContacts();
-  const isBooks = Boolean(filteredContacts.length);
 
   return (
     <div className={css.style}>
