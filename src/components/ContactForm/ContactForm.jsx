@@ -16,13 +16,6 @@ const ContactForm = () => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
-  const isDublicate = name => {
-    const normalizedName = name.toLowerCase();
-    const result = contacts.find(({ name }) => {
-      return name.toLowerCase() === normalizedName;
-    });
-    return Boolean(result);
-  };
   const addContact = ({ name, number }) => {
     if (isDublicate(name, number)) {
       alert(`${name} is already in contacts`);
@@ -35,11 +28,16 @@ const ContactForm = () => {
         name,
         number,
       };
-      return {
-        contacts: [newContact, ...prevContacts],
-      };
+      return [newContact, ...prevContacts];
     });
     return true;
+  };
+  const isDublicate = name => {
+    const normalizedName = name.toLowerCase();
+    const result = contacts.find(({ name }) => {
+      return name.toLowerCase() === normalizedName;
+    });
+    return Boolean(result);
   };
   const removeContact = id => {
     setContacts(prevContacts =>
@@ -64,7 +62,7 @@ const ContactForm = () => {
       <h4>Phonebook</h4>
       <div className={css.wrapper}>
         <div className={css.block}>
-          <Form onSubmit={addContact}></Form>
+          <Form onSubmit={addContact} />
         </div>
         <div>
           <h4>Contacts</h4>

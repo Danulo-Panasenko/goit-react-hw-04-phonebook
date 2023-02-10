@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'components/Button/Button';
-const ContactList = ({ removeContact, contacts }) => {
+const ContactList = ({ removeContact, filteredContacts }) => {
   const Contact = contacts.map(({ id, name, number }) => (
     <li key={id}>
       {name}:{number}
