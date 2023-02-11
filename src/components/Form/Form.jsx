@@ -9,7 +9,7 @@ const Form = ({ onSubmit }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit({ ...state });
+    onSubmit({ state });
     setState({ ...inititalState });
   };
 
